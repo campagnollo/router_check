@@ -1,12 +1,15 @@
+"""
+This script is used to connect to multiple routers using SSH, perform some operations, and log the results.
+"""
 import paramiko
 import socket
 from getpass import getpass
 import sys,os
 
-
-
-"""Router object to store all routers to be accessed"""
 class routers():
+    """
+    This class represents a router with methods to connect, disconnect and get the device id.
+    """
 
     def __init__(self, router_name, user, password):
         try:
@@ -34,9 +37,11 @@ class routers():
     def device_id(self):
         return self.router_name
 
-"""Object for files. Clears old files and create new files"""
-class cabinet():
 
+class cabinet():
+    """
+    This class represents a file cabinet with methods to handle success and failure logs.
+    """
     def __init__(self):
         if os.path.isfile("failure.txt"):
              os.remove("failure.txt")
